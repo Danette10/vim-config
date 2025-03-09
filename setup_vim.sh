@@ -45,7 +45,6 @@ set expandtab
 set autoindent
 syntax on
 set background=dark
-colorscheme gruvbox
 set runtimepath+=~/.vim/plugged/gruvbox
 
 call plug#begin('~/.vim/plugged')
@@ -63,7 +62,9 @@ EOF
 
 echo "✅ Fichier .vimrc mis en place."
 
-# Installer les plugins Vim
+# 🔄 **Forcer l'installation des plugins avant d'ouvrir Vim**
 vim +PlugInstall +qall
+
+echo "colorscheme gruvbox" >> $VIMRC
 
 echo "🎉 Installation terminée ! Ouvre Vim et profite !"
