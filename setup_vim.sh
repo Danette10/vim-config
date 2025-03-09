@@ -35,11 +35,6 @@ else
     echo "✅ vim-plug déjà installé."
 fi
 
-# Installer les plugins Vim avant de générer le fichier .vimrc
-echo "📥 Installation des plugins Vim..."
-vim +'PlugInstall --sync' +qall
-echo "✅ Plugins installés !"
-
 # Configuration du fichier .vimrc
 cat <<EOF > "$VIMRC"
 set number
@@ -50,22 +45,27 @@ set expandtab
 set autoindent
 syntax on
 set background=dark
+colorscheme gruvbox
+set runtimepath+=~/.vim/plugged/gruvbox
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'preservim/nerdtree'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
+Plug 'preservim/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'jiangmiao/auto-pairs'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
-
-" Vérifier si gruvbox est installé avant d'activer le thème
-if filereadable(expand("~/.vim/plugged/gruvbox/colors/gruvbox.vim"))
-    colorscheme gruvbox
-endif
 
 nnoremap <C-n> :NERDTreeToggle<CR>
 EOF
 
 echo "✅ Fichier .vimrc mis en place."
-echo "🎉 Installation terminée ! Ouvre Vim et profite !"
+
+# Installer les plugins Vim
+echo "📥 Installation des plugins..."
+vim +PlugInstall +qall
+
+echo "✅ Tous les plugins sont installés !"
+echo "🎉 Installation terminée ! Ouvre Vim et profite 🚀"
