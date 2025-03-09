@@ -45,7 +45,6 @@ set expandtab
 set autoindent
 syntax on
 set background=dark
-colorscheme gruvbox
 
 call plug#begin('~/.vim/plugged')
 
@@ -55,12 +54,17 @@ Plug 'morhetz/gruvbox'
 
 call plug#end()
 
+" Appliquer gruvbox seulement s'il est installé
+if filereadable(expand("~/.vim/plugged/gruvbox/colors/gruvbox.vim"))
+    colorscheme gruvbox
+endif
+
 nnoremap <C-n> :NERDTreeToggle<CR>
 EOF
 
 echo "✅ Fichier .vimrc mis en place."
 
-# Installer les plugins Vim
+echo "📥 Installation des plugins Vim..."
 vim +PlugInstall +qall
-
+echo "✅ Plugins installés !"
 echo "🎉 Installation terminée ! Ouvre Vim et profite !"
