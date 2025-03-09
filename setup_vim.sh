@@ -35,6 +35,11 @@ else
     echo "✅ vim-plug déjà installé."
 fi
 
+# Installer les plugins Vim avant de générer le fichier .vimrc
+echo "📥 Installation des plugins Vim..."
+vim +'PlugInstall --sync' +qall
+echo "✅ Plugins installés !"
+
 # Configuration du fichier .vimrc
 cat <<EOF > "$VIMRC"
 set number
@@ -54,7 +59,7 @@ Plug 'morhetz/gruvbox'
 
 call plug#end()
 
-" Appliquer gruvbox seulement s'il est installé
+" Vérifier si gruvbox est installé avant d'activer le thème
 if filereadable(expand("~/.vim/plugged/gruvbox/colors/gruvbox.vim"))
     colorscheme gruvbox
 endif
@@ -63,8 +68,4 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 EOF
 
 echo "✅ Fichier .vimrc mis en place."
-
-echo "📥 Installation des plugins Vim..."
-vim +PlugInstall +qall
-echo "✅ Plugins installés !"
 echo "🎉 Installation terminée ! Ouvre Vim et profite !"
