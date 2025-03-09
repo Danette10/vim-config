@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e  # Arrête le script en cas d'erreur
+set -e  # Stop en cas d'erreur
 
 echo "🚀 Installation de Vim et des plugins..."
 
@@ -14,7 +14,7 @@ else
     exit 1
 fi
 
-# Installer Vim et git si absents
+# Installer Vim et Git si absents
 if ! command -v vim &> /dev/null; then
     echo "🛠️ Installation de Vim..."
     $PKG_MANAGER vim git curl
@@ -22,7 +22,7 @@ else
     echo "✅ Vim déjà installé."
 fi
 
-# Chemins des configurations
+# Définir les chemins
 VIM_DIR="$HOME/.vim"
 VIMRC="$HOME/.vimrc"
 
@@ -64,8 +64,6 @@ EOF
 echo "✅ Fichier .vimrc mis en place."
 
 # Installer les plugins Vim
-echo "📥 Installation des plugins..."
 vim +PlugInstall +qall
 
-echo "✅ Tous les plugins sont installés !"
-echo "🎉 Installation terminée ! Ouvre Vim et profite 🚀"
+echo "🎉 Installation terminée ! Ouvre Vim et profite !"
