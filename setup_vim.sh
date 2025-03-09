@@ -6,21 +6,15 @@ echo "🚀 Installation de Vim et des plugins..."
 
 # Détecte la distribution Linux
 if [ -f /etc/debian_version ]; then
-    PKG_MANAGER="sudo apt update && sudo apt install vim git curl -y"
+    sudo apt update && sudo apt install -y vim git curl
 elif [ -f /etc/arch-release ]; then
-    PKG_MANAGER="sudo pacman -Sy --noconfirm"
+    sudo pacman -Sy --noconfirm
 else
     echo "⚠️  Distribution non prise en charge. Installe manuellement Vim."
     exit 1
 fi
 
-# Installer Vim et Git si absents
-if ! command -v vim &> /dev/null; then
-    echo "🛠️ Installation de Vim..."
-    $PKG_MANAGER
-else
-    echo "✅ Vim déjà installé."
-fi
+echo "✅ Vim installé avec succès."
 
 # Définir les chemins
 VIM_DIR="$HOME/.vim"
